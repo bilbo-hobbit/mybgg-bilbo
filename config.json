@@ -1,19 +1,19 @@
 {
     "project": {
         "name": "mybgg",
-        "title": "Emil's boardgames"
+        "title": "Haqwaus Brettspiele"
     },
     "boardgamegeek": {
-        "user_name": "EmilStenstrom",
+        "user_name": "haqwau",
         "extra_params": {
             "own": 1
         }
     },
     "algolia": {
-        "app_id": "JS9TM39YJZ",
-        "api_key_search_only": "0afdcd4e518ebd867fa3d2484bbfd0de",
+        "app_id": "15VD4BH4DE",
+        "api_key_search_only": "9b057aad63863185038a3029363f5ee6",
         "index_name": "mybgg",
         "hits_per_page": 48,
-        "sort_by": "desc(numrated)"
+        "sort_by": "asc(name)"
     }
 }
