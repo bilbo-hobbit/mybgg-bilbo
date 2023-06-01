@@ -164,7 +164,7 @@ function get_widgets(SETTINGS) {
         sortBy: function (a, b) { return parseInt(a.name) - parseInt(b.name); },
       }
     ),
-    "refine_weight": panel('Complexity')(instantsearch.widgets.refinementList)(
+    "refine_weight": panel('Komplexität')(instantsearch.widgets.refinementList)(
       {
         container: '#facet-weight',
         attribute: 'weight',
