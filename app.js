@@ -10,9 +10,9 @@ function loadJSON(path, callback) {
   req.send(null);
 }
 
-function close_all(event){
+function close_all(event) {
   var details = document.querySelectorAll("details");
-  details.forEach(function(details_elem){
+  details.forEach(function (details_elem) {
     if (details_elem.hasAttribute("open")) {
       details_elem.removeAttribute("open");
     }
@@ -21,14 +21,14 @@ function close_all(event){
 
 function on_render() {
   var hits = document.querySelectorAll(".ais-Hits-item");
-  hits.forEach(function(hit) {
+  hits.forEach(function (hit) {
     color = hit.querySelector("img").getAttribute("data-maincolor");
     hit.setAttribute("style", "background: rgba(" + color + ", 0.5)");
   })
 
   if ("ontouchstart" in window) {
     function close_all_panels(facets) {
-      facets.querySelectorAll(".facet .ais-Panel-body").forEach(function(panel_body) {
+      facets.querySelectorAll(".facet .ais-Panel-body").forEach(function (panel_body) {
         panel_body.style.display = "none";
       });
     }
@@ -45,10 +45,10 @@ function on_render() {
     }
 
     var facets = document.querySelectorAll(".facet");
-    facets.forEach(function(facet) {
+    facets.forEach(function (facet) {
       var is_loaded = facet.getAttribute("loaded");
       if (!is_loaded) {
-        facet.addEventListener("click", function(event) {
+        facet.addEventListener("click", function (event) {
           toggle_panel(facet);
           event.stopPropagation();
         });
@@ -58,8 +58,8 @@ function on_render() {
   }
 
   var summaries = document.querySelectorAll("summary");
-  summaries.forEach(function(elem){
-    function conditional_close(){
+  summaries.forEach(function (elem) {
+    function conditional_close() {
       close_all();
       if (!elem.parentElement.hasAttribute("open")) {
         var game_details = elem.parentElement.querySelector(".game-details");
@@ -72,7 +72,7 @@ function on_render() {
   document.addEventListener("click", close_all);
 
   var game_details = document.querySelectorAll(".game-details");
-  game_details.forEach(function(elem){
+  game_details.forEach(function (elem) {
     var close = document.createElement("div");
     close.setAttribute("class", "close");
     close.setAttribute("tabindex", "0");
@@ -84,7 +84,7 @@ function on_render() {
     close.addEventListener("keypress", close_details);
     elem.appendChild(close);
 
-    elem.addEventListener("click", function(event){
+    elem.addEventListener("click", function (event) {
       event.stopPropagation();
     });
   });
@@ -125,10 +125,10 @@ function get_widgets(SETTINGS) {
     "sort": instantsearch.widgets.sortBy({
       container: '#sort-by',
       items: [
-        {label: 'Name', value: SETTINGS.algolia.index_name},
-        {label: 'BGG Rank', value: SETTINGS.algolia.index_name + '_rank_ascending'},
-        {label: 'Number of ratings', value: SETTINGS.algolia.index_name + '_numrated_descending'},
-        {label: 'Number of owners', value: SETTINGS.algolia.index_name + '_numowned_descending'}
+        { label: 'Name', value: SETTINGS.algolia.index_name },
+        { label: 'BGG Rank', value: SETTINGS.algolia.index_name + '_rank_ascending' },
+        { label: 'Number of ratings', value: SETTINGS.algolia.index_name + '_numrated_descending' },
+        { label: 'Number of owners', value: SETTINGS.algolia.index_name + '_numowned_descending' }
       ]
     }),
     "clear": instantsearch.widgets.clearRefinements({
@@ -155,13 +155,13 @@ function get_widgets(SETTINGS) {
         showMore: true,
       }
     ),
-    "refine_players": panel('Number of players')(instantsearch.widgets.hierarchicalMenu)(
+    "refine_players": panel('Spieleranzahl')(instantsearch.widgets.hierarchicalMenu)(
       {
         container: '#facet-players',
         collapsible: true,
         attributes: ['players.level1', 'players.level2'],
         operator: 'or',
-        sortBy: function(a, b){ return parseInt(a.name) - parseInt(b.name); },
+        sortBy: function (a, b) { return parseInt(a.name) - parseInt(b.name); },
       }
     ),
     "refine_weight": panel('Complexity')(instantsearch.widgets.refinementList)(
@@ -169,7 +169,7 @@ function get_widgets(SETTINGS) {
         container: '#facet-weight',
         attribute: 'weight',
         operator: 'or',
-        sortBy: function(a, b){ return WEIGHT_LABELS.indexOf(a.name) - WEIGHT_LABELS.indexOf(b.name); },
+        sortBy: function (a, b) { return WEIGHT_LABELS.indexOf(a.name) - WEIGHT_LABELS.indexOf(b.name); },
       }
     ),
     "refine_playingtime": panel('Playing time')(instantsearch.widgets.refinementList)(
@@ -177,7 +177,7 @@ function get_widgets(SETTINGS) {
         container: '#facet-playing-time',
         attribute: 'playing_time',
         operator: 'or',
-        sortBy: function(a, b){ return PLAYING_TIME_ORDER.indexOf(a.name) - PLAYING_TIME_ORDER.indexOf(b.name); },
+        sortBy: function (a, b) { return PLAYING_TIME_ORDER.indexOf(a.name) - PLAYING_TIME_ORDER.indexOf(b.name); },
       }
     ),
     "refine_previousplayers": panel('Previous players')(instantsearch.widgets.refinementList)(
@@ -206,21 +206,21 @@ function get_widgets(SETTINGS) {
     ),
     "hits": instantsearch.widgets.hits({
       container: '#hits',
-      transformItems: function(items) {
+      transformItems: function (items) {
         hide_facet_when_no_data('#facet-previous-players', items, 'previous_players');
         hide_facet_when_no_data('#facet-numplays', items, 'numplays');
 
-        return items.map(function(game){
+        return items.map(function (game) {
           players = [];
-          game.players.forEach(function(num_players){
+          game.players.forEach(function (num_players) {
             match = num_players.level2.match(/^\d+\ >\ ([\w\ ]+)\ (?:with|allows)\ (\d+\+?)$/);
             type = match[1].toLowerCase();
             num = match[2];
 
             type_callback = {
-              'best': function(num) { return '<strong>' + num + '</strong><span title="Best with">★</span>'; },
-              'recommended': function(num) { return num; },
-              'expansion': function(num) { return num + '<span title="With expansion">⊕</span>'; },
+              'best': function (num) { return '<strong>' + num + '</strong><span title="Best with">★</span>'; },
+              'recommended': function (num) { return num; },
+              'expansion': function (num) { return num + '<span title="With expansion">⊕</span>'; },
             };
             players.push(type_callback[type](num));
 

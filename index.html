@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>All my boardgames</title>
   <meta charset="utf-8">
@@ -11,6 +12,7 @@
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,700&amp;display=swap">
 </head>
+
 <body>
   <header class="search">
     <img class="logo" src="favicon.ico" height="36" width="36">
@@ -41,6 +43,7 @@
     <details class="game-wrapper">
       <summary>
         <div class="game">
+          <p>{{ name }}</p>
           <img src="{{{ image }}}" data-maincolor="{{{ color }}}" alt="{{{ name }}}">
         </div>
       </summary>
@@ -101,4 +104,5 @@
 
   <script src="app.js"></script>
 </body>
+
 </html>
