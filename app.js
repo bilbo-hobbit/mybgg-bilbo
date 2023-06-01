@@ -146,7 +146,7 @@ function get_widgets(SETTINGS) {
         showMore: true,
       }
     ),
-    "refine_mechanics": panel('Mechanics')(instantsearch.widgets.refinementList)(
+    "refine_mechanics": panel('Spielmechanik')(instantsearch.widgets.refinementList)(
       {
         container: '#facet-mechanics',
         collapsible: true,
@@ -180,7 +180,7 @@ function get_widgets(SETTINGS) {
         sortBy: function (a, b) { return PLAYING_TIME_ORDER.indexOf(a.name) - PLAYING_TIME_ORDER.indexOf(b.name); },
       }
     ),
-    "refine_previousplayers": panel('Previous players')(instantsearch.widgets.refinementList)(
+    "refine_previousplayers": panel('Mitspieler')(instantsearch.widgets.refinementList)(
       {
         container: '#facet-previous-players',
         attribute: 'previous_players',
@@ -189,7 +189,7 @@ function get_widgets(SETTINGS) {
         showMore: true,
       }
     ),
-    "refine_numplays": panel('Total plays')(instantsearch.widgets.numericMenu)(
+    "refine_numplays": panel('Gespielt')(instantsearch.widgets.numericMenu)(
       {
         container: '#facet-numplays',
         attribute: 'numplays',
