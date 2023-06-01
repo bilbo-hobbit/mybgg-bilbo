@@ -137,7 +137,7 @@ function get_widgets(SETTINGS) {
         resetLabel: 'Clear all'
       }
     }),
-    "refine_categories": panel('Categories')(instantsearch.widgets.refinementList)(
+    "refine_categories": panel('Kategorien')(instantsearch.widgets.refinementList)(
       {
         container: '#facet-categories',
         collapsible: true,
