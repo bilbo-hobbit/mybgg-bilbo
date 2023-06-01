@@ -155,7 +155,7 @@ function get_widgets(SETTINGS) {
         showMore: true,
       }
     ),
-    "refine_players": panel('Spieleranzahl')(instantsearch.widgets.hierarchicalMenu)(
+    "refine_players": panel('Spieleranzah')(instantsearch.widgets.hierarchicalMenu)(
       {
         container: '#facet-players',
         collapsible: true,
