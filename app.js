@@ -155,7 +155,7 @@ function get_widgets(SETTINGS) {
         showMore: true,
       }
     ),
-    "refine_players": panel('Spieleranzah')(instantsearch.widgets.hierarchicalMenu)(
+    "refine_players": panel('Spieleranzahl')(instantsearch.widgets.hierarchicalMenu)(
       {
         container: '#facet-players',
         collapsible: true,
@@ -172,7 +172,7 @@ function get_widgets(SETTINGS) {
         sortBy: function (a, b) { return WEIGHT_LABELS.indexOf(a.name) - WEIGHT_LABELS.indexOf(b.name); },
       }
     ),
-    "refine_playingtime": panel('Playing time')(instantsearch.widgets.refinementList)(
+    "refine_playingtime": panel('Spieldauer')(instantsearch.widgets.refinementList)(
       {
         container: '#facet-playing-time',
         attribute: 'playing_time',
